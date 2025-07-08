@@ -15,10 +15,10 @@ wss.on("connection", (ws: WebSocket) => {
 
   // 监听客户端发送的消息
   ws.on("message", (message) => {
-    console.log("message", message);
     // 将消息广播给所有已连接的客户端
     for (const client of clients) {
       if (client.readyState === WebSocket.OPEN) {
+        console.log("message", typeof message);
         client.send(message);
       }
     }
